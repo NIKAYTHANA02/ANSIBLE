@@ -1,0 +1,4 @@
+1) The ansible version used is 2.4 in Ubuntu 16.04
+2) The user creation playbooks with password must have "passlib" installed on the system from were playbook is executed. excute the two command "apt-get install python-pip" and "pip install passlib".once above mentioned commands are executed. you can generate password using "python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.using(rounds=5000).hash(getpass.getpass())"
+" 
+  
