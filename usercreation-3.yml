@@ -1,0 +1,12 @@
+---
+- hosts: client1
+  tasks:
+      - name: user creation
+        user:
+           name: "{{ item }}"
+           password: '$6$RY30RHYJ8HTYtlD6$BeS.jvKgiPRNBrj4.u.w/3uCsGTAnl2/js7NznOfpeuMNtI9YmtP0uRG1AyZ.ouM3ga/4ykvzuMZCseGMrGic0'
+           createhome: yes
+           state: present
+        with_items:
+           - vani
+           - dinesh 

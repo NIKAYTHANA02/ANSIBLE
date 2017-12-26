@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - name: First Play book 
+      shell: echo "hello world"

@@ -1,0 +1,11 @@
+---
+- hosts: client4
+  become: yes
+  become_user: user1
+  become_method: sudo
+  tasks:
+     - name: change the selinux from enforcing to disabled permanently
+       lineinfile:
+           path: /etc/sysconfig/selinux
+           regexp: '^SELINUX='
+           line: 'SELINUX=disabled'

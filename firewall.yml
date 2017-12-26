@@ -1,0 +1,73 @@
+---
+- hosts: client1
+  tasks:
+     - name: Input-statefull firefull
+       iptables:
+           chain: INPUT
+           table: filter
+           ctstate: ESTABLISHED,RELATED
+           jump: ACCEPT
+           state: present
+     
+     - name: Input-statefull firefull
+       iptables:
+           chain: OUTPUT
+           table: filter
+           ctstate: ESTABLISHED,RELATED
+           jump: ACCEPT
+           state: present
+
+     - name: Allow SSH 
+       iptables:
+           chain: INPUT
+           table: filter
+           protocol: tcp
+           action: insert
+           destination_port: 22
+           jump: ACCEPT
+           state: present
+
+     - name: Allow OUTGOING port 80
+       iptables:
+           chain: OUTPUT
+           table: filter
+           protocol: tcp
+           action: insert
+           destination_port: 80
+           jump: ACCEPT
+           state: present
+
+     - name: Allow OUTGOING port 443
+       iptables:
+           chain: OUTPUT
+           table: filter
+           protocol: tcp
+           action: insert
+           destination_port: 443
+           jump: ACCEPT
+           state: present
+
+     - name: Allow OUTGOING port 53
+       iptables:
+           chain: OUTPUT
+           table: filter
+           protocol: udp
+           action: insert
+           destination_port: 53
+           jump: ACCEPT
+           state: present
+
+     - name: INPUT Policy
+       iptables:
+           chain: INPUT
+           policy: DROP
+
+     - name: OUTPUT Policy
+       iptables:
+           chain: OUTPUT
+           policy: DROP
+
+     - name: FORWARD Policy
+       iptables:
+           chain: FORWARD
+           policy: DROP

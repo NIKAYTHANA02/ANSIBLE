@@ -1,0 +1,10 @@
+---
+- hosts: client2
+  vars_files:
+    - haihai.yml
+  tasks:
+    - name: Action based on OS
+      yum:
+        name: "{{ name }}"
+        state: latest
+        

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+       - name: Find the Disk Space Information
+         shell: df -h
+         register: result
+
+       - name: Print the result
+         debug:
+           var: result
+           verbosity: 0

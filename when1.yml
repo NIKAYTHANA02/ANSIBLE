@@ -1,0 +1,19 @@
+---
+- hosts: client2
+  vars_files:
+    - vars/CentOS.yml
+    - vars/Ubuntu.yml
+  tasks:
+     - name: installing web server
+       apt:
+         state: latest
+         update_cache: yes          
+       when:
+         - ansible_distribution == "Ubuntu"
+
+     - name: installing web server
+       yum:
+         state: latest
+         update_cache: yes
+       when:
+         - ansible_distribution == "CentOS"

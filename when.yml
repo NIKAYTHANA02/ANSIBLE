@@ -1,0 +1,18 @@
+---
+- hosts: client2
+  tasks:
+     - name: installing web server
+       apt:
+         name: apache2
+         state: latest
+         update_cache: yes          
+       when:
+         - ansible_distribution == "Ubuntu"
+
+     - name: installing web server
+       yum:
+         name: httpd
+         state: latest
+         update_cache: yes
+       when:
+         - ansible_distribution == "CentOS"

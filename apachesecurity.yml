@@ -1,0 +1,26 @@
+---
+- hosts: client1
+  tasks:
+    - name: include serversignature on apache.conf file
+      lineinfile: 
+            path: /etc/apache2/apache2.conf
+            line: "ServerSignature Off"
+            backup: yes
+            state: present
+
+    - name: restarting the Apache server
+      systemd:
+             name: apache2
+             state: restarted
+
+    - name: include serversignature on apache.conf file
+      lineinfile: 
+            path: /etc/apache2/apache2.conf
+            line: "ServerTokens Prod"
+            backup: yes
+            state: present
+
+    - name: restarting the Apache server
+      systemd:
+             name: apache2
+             state: restarted

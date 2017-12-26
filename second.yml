@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+       - name: Find the Disk Space Information
+         shell: df -h

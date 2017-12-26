@@ -1,0 +1,27 @@
+---
+- hosts: client1
+  become: yes
+  become_method: sudo
+  become_user: user1
+  handlers:
+     - name: restart apache
+       systemd:
+           name: apache2
+           state: restarted
+  tasks:
+     - name: include serversignature on apache.conf file
+       lineinfile: 
+            path: /etc/apache2/apache2.conf
+            line: "ServerSignature Off"
+            backup: yes
+            state: present
+       notify:
+           - restart apache
+     - name: include serversignature on apache.conf file
+       lineinfile: 
+            path: /etc/apache2/apache2.conf
+            line: "ServerTokens Prod"
+            backup: yes
+            state: present
+       notify: restart apache
+

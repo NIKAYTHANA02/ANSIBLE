@@ -1,0 +1,17 @@
+---
+- hosts: client1
+  vars_prompt:
+    - name: username
+      prompt: "enter the username"
+    - name: password
+      prompt: "enter the password"
+      encrypt: "sha512_crypt"
+      private: yes
+      confirm: yes
+  tasks:
+      - name: user creation
+        user:
+           name: "{{ username }}"
+           password: "{{ password }}"
+           createhome: yes
+           state: present 

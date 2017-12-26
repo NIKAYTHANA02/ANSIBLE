@@ -1,0 +1,14 @@
+---
+- hosts: client1
+  tasks:
+    - name: list the directory content (ls) 
+      shell: ls /
+      register: result
+      tags: first
+
+
+    - name: list the directory long content (ls -l)
+      shell: ls -l /
+      register: hello
+      tags: second
+

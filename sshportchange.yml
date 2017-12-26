@@ -1,0 +1,16 @@
+---
+- hosts: client4
+  become: yes
+  become_user: user1
+  become_method: sudo
+  tasks:
+     - name: Changing ssh port from 22 to 2222
+       lineinfile:
+            path: /etc/ssh/sshd_config
+            regexp: '#Port 22'
+            line: 'Port 2222'
+
+     - name: Restart the ssh service
+       systemd:
+            name: sshd
+            state: restarted 

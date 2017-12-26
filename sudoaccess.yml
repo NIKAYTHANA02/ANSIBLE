@@ -1,0 +1,11 @@
+---
+- hosts: client1
+  vars_prompt:
+    - name: username
+      prompt: "enter the username"
+  tasks:
+    - name: adding user to sudo privileges
+      lineinfile:
+          path: /etc/sudoers
+          line: '{{ username }} ALL=(ALL:ALL) ALL'
+          state: present

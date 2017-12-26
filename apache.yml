@@ -1,0 +1,28 @@
+---
+- hosts: client1
+  tasks:
+     - name: Installing Webserver
+       apt: name=apache2 state=latest update_cache=yes
+
+     - name: Adding Content to webserver
+       copy:
+          src: index.html
+          dest: /var/www/html/
+          backup: yes
+
+     - name: service start
+       systemd:
+          name: apache2
+          enabled: yes
+          state: started
+      
+     - name: Allowing port 80 on firewall
+       iptables:
+          chain: INPUT
+          table: filter
+          protocol: tcp
+          action: insert
+          destination_port: 80
+          jump: ACCEPT
+          state: present
+           
