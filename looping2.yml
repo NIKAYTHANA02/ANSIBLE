@@ -1,0 +1,13 @@
+---
+- hosts: client1
+  tasks:
+    - name: creating multiple users
+      user:
+         name: "{{ item.name }}"
+         state: present
+         groups: "{{ item.groups }}"
+         password: "{{ item.password }}"
+      with_items:
+          - {name: user7, groups: wheel, password: '$6$ISWgGP./tVRk9W2h$isweCv0N/fEzCwCgcuGySXoOOCMFqprhH6X3h9KKWohJs8cOzOuQ.ieUaamZh/oAfKaGB3kt9JDGdxgEiDdVY/'}
+          - {name: user8, groups: wheel, password: '$6$ISWgGP./tVRk9W2h$isweCv0N/fEzCwCgcuGySXoOOCMFqprhH6X3h9KKWohJs8cOzOuQ.ieUaamZh/oAfKaGB3kt9JDGdxgEiDdVY/'}
+          - {name: user9, groups: wheel, password: '$6$ISWgGP./tVRk9W2h$isweCv0N/fEzCwCgcuGySXoOOCMFqprhH6X3h9KKWohJs8cOzOuQ.ieUaamZh/oAfKaGB3kt9JDGdxgEiDdVY/'}

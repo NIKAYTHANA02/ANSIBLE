@@ -1,0 +1,8 @@
+---
+- hosts: client1
+  tasks:
+    - name: update password
+      user:
+        name: user3
+        password: '$6$ISWgGP./tVRk9W2h$isweCv0N/fEzCwCgcuGySXoOOCMFqprhH6X3h9KKWohJs8cOzOuQ.ieUaamZh/oAfKaGB3kt9JDGdxgEiDdVY/'
+        update_password: always

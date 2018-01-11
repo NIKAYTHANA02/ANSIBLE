@@ -1,0 +1,14 @@
+---
+- hosts: client1
+  tasks:
+     - name: listing httpd package
+       yum:
+         list: httpd
+       tags:
+         - one
+
+     - name: listing ntp package
+       yum:
+         list: ntp
+       tags:
+         - two

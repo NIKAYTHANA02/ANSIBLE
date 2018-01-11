@@ -1,0 +1,10 @@
+---
+- hosts: client1
+  vars_files:
+     - users.yml
+  tasks:
+     - name: creating multple users
+       user:
+          name: "{{ item }}"
+          state: present
+       with_items: "{{ users }}"

@@ -1,0 +1,15 @@
+---
+- hosts: client1
+  vars:
+     userlist:
+        - one
+        - two
+        - three
+  tasks:
+     - name: creating multiple users
+       user:
+         name: "{{ item }}"
+         state: present
+       with_items: "{{ userlist }}"
+           
+
