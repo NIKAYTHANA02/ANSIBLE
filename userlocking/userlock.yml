@@ -1,0 +1,24 @@
+---
+- hosts: client1
+  tasks:
+     - name: copy the file reading script and userlist file
+       copy:
+         src: "{{ item }}"
+         dest: /root
+         mode: 0755
+       with_items:
+           - userlist
+           - readuser.sh
+
+     - name: running the script
+       shell: sh /root/readuser.sh userlist
+       ignore_errors: yes
+
+     - name: delete the userlist and script file
+       file:
+          path: /root/{{ item }}
+          state: absent
+       with_items:
+            - userlist
+            - readuser.sh
+       
