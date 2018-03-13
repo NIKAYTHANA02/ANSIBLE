@@ -1,0 +1,19 @@
+---
+- hosts: <XXXXXXX>
+  remote_user: root
+  gather_facts: no
+  tasks:
+    - name: installing python
+      raw: apt install python-minimal -y
+
+    - name: installing Webserver
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+
+    - name: starting the service
+      systemd:
+        name: apache2
+        enabled: yes
+        state: started 

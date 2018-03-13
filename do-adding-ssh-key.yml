@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  vars:
+    do_token: "XXXXXXXX" 
+  tasks:
+    - name: Adding ssh public key
+      digital_ocean_sshkey:
+         name: XXXXXX
+         ssh_pub_key: "XXXXXX"
+         state: present
+         oauth_token: "{{ do_token }}"

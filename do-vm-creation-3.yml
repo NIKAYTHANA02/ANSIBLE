@@ -1,0 +1,46 @@
+---
+- hosts: localhost
+  vars:
+    do_token: "XXXXXXXXXXXXXXX" 
+  tasks:
+    - name: creating a VM
+      digital_ocean:
+        api_token: "{{ do_token }}"
+        command: droplet
+        name: mydroplet2
+        size_id: 1gb
+        region_id: blr1
+        image_id: 32481995
+        ssh_key_ids: XXXXXXX
+        wait_timeout: 500
+      register: xyz
+   
+    - name: creating inmemory inventory
+      add_host:
+         name: "{{ xyz.droplet.ip_address }}"
+         group: hello
+      when: xyz.droplet is defined  
+
+- hosts: hello
+  remote_user: root
+  gather_facts: no
+  tasks:
+    - name: waiting for ssh port
+      wait_for: timeout=300
+      delegate_to: localhost
+      ignore_errors: yes
+
+    - name: installing python
+      raw: apt install python-minimal -y
+
+    - name: installing Webserver
+      apt:
+        name: apache2
+        update_cache: yes
+        state: present
+
+    - name: starting the service
+      systemd:
+        name: apache2
+        enabled: yes
+        state: started 
