@@ -5,8 +5,8 @@
       user:
         name: "{{ item }}"
         state: present
-        groups: "wheel"
+        groups: "sudo"
       with_items:
-        - user1
-        - user2
-        - user3
+        - king
+        - queen
+        - jack

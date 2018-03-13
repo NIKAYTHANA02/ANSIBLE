@@ -1,0 +1,5 @@
+---
+- name: start webserver
+  systemd:
+    name: nginx
+    state: started

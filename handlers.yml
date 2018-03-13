@@ -1,8 +1,8 @@
 ---
 - hosts: client1
-  become: yes
-  become_method: sudo
-  become_user: user1
+#  become: yes
+#  become_method: sudo
+#  become_user: user1
   handlers:
      - name: restart apache
        systemd:
