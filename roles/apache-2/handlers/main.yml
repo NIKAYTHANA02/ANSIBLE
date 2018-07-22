@@ -1,0 +1,10 @@
+---
+- name: webserver-start
+  systemd:
+    name: "{{ pkg }}"
+    state: started
+- name: webserver-restart
+  systemd:
+    name: "{{ pkg }}"
+    state: restarted
+...

@@ -1,0 +1,10 @@
+---
+- name: application config
+  copy:
+    src: index.html
+    dest: /var/www/html/
+    backup: yes
+    mode: 0755
+  notify:
+     - webserver-restart
+...

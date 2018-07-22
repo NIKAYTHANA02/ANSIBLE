@@ -1,0 +1,9 @@
+---
+- name: install apache
+  apt:
+   name: "{{ pkg }}"
+   state: present
+   update_cache: yes
+  notify:
+    - webserver-start
+...
