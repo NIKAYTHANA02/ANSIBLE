@@ -1,0 +1,7 @@
+---
+pkgname: apache2
+domain_name: 
+  - website1
+  - website2
+  - website3
+...

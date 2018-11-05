@@ -1,0 +1,8 @@
+---
+- name: creating a ssh-key
+  ec2_key:
+    name: ansible-key
+    key_material: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDBEw09fLEn0H3yhW6YM3IDn2lOQyGfZ9P+bMK8BZHnDL5k53lSm+zc+o3EV0G/wYZhxnfOA7nSJbt9IhGGjI7IRirRYLfLbzdCBAsjMpGJKQSJm8jcnqn5c38A/d/gtxeWUnv8YrSlLBUgXbYF8biaslqb6X4cfnEmENlBD8C5oZFflA5A5Ut3xO0vRP2/6QS3eeSl4eh7pzw2mGiY2E4ghuOJPVcNj1cgTKsBV3hZWNW3l5mNC3xJb7vxcYkjq8XVf51V5GvSfSk1Z9Cy1HjdzhuKSID+sSDsa5jMStFtO26TYkV2PQt3rxGyVBYAUtS4Jzqhg8cmc/MlcucmGCJr/X3obA3SNx8m0NhHCCdsvCfH4GM5n1lMNv/eOrw/S4VyXIjKuBx3fei+6F4mFo1ofqulHevXM8K1V4q4b92r1JGR9AIpEYR9+UczHsF+sBBvI+kN1goo0kjJUEZXMAo6oiiZzo4zmygdchN+wMta9YyXpqm/71Ew9f+hg1X2Bd8wJy7426hS1Vom0swyuHcERC8Y+ah2AnZX0AlPvlzn49hc+NrE7b+AHZMzhe+76bLbDK9msq5RQbc7uyiSkdNViwnsmoefqTgTmnlnSbvLwzRPVPyYMoQcUqhTPp+ElmZpCo6goCAFh963Ywu4IW63jYhF00+UUybFliRk68KQ/w== karthik"
+    region: ap-south-1
+    state: present
+...

@@ -1,0 +1,14 @@
+---
+- name: example using security group rule descriptions
+  ec2_group:
+    name: ansiblesg
+    description: sg with rule descriptions
+    vpc_id: vpc-508e5839
+    region: ap-south-1
+    rules:
+      - proto: tcp
+        ports:
+        - 22
+        cidr_ip: 0.0.0.0/0
+        rule_desc: allow all on port 80
+...

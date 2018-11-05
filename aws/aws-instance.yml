@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - include_tasks: aws-key.yml
+    - include_tasks: aws-sg.yml
+    - include_tasks: aws-ec2.yml
+...

@@ -1,0 +1,51 @@
+---
+- name: installing apache2
+  apt:
+     name: "{{ pkgname }}"
+     update_cache: yes
+     state: present
+  notify:
+     - webserver-start
+
+- name: creating webroot
+  file:
+    path: /var/www/html/{{ item }}
+    state: directory
+    mode: 0775
+  loop:
+    - website1
+    - website2
+    - website3
+
+- name: creating log dir
+  file:
+    path: /var/log/apache2/{{ item }}
+    state: directory
+    mode: 0775
+  loop:
+    - website1
+    - website2
+    - website3
+
+- name: rendering template
+  template:
+     src: vwebsite.j2
+     dest: /etc/apache2/sites-enabled/{{ item }}.conf
+  loop:
+    - website1
+    - website2
+    - website3
+
+
+- name: copy the index.html file
+  copy:
+    src: "{{ item }}"
+    dest: /var/www/html/{{ item }}/index.html
+  loop:
+     - website1
+     - website2
+     - website3
+  notify:
+      - webserver-reload
+
+...

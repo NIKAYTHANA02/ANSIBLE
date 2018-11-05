@@ -1,0 +1,17 @@
+---
+- name: installing apache2
+  apt:
+     name: "{{ pkgname }}"
+     update_cache: yes
+     state: present
+  notify:
+     - webserver-start
+
+- name: copy the index.html file
+  copy:
+    src: index.html
+    dest: /var/www/html/
+  notify:
+      - webserver-reload
+
+...

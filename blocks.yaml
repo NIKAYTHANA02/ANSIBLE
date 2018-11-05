@@ -1,0 +1,21 @@
+---
+- hosts: client1
+  tasks:
+    - name: view the content
+      block:
+         - shell: cat /etc/passwd
+           register: xyz
+
+         - debug:
+              var: xyz
+      tags: first
+
+    - name: view the content in log form
+      block:
+         - shell: cat /etc/group
+           register: abc
+
+         - debug:
+              var: abc
+      tags: second           
+...

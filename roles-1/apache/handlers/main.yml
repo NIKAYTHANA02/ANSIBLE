@@ -1,0 +1,12 @@
+---
+- name: webserver-start
+  systemd:
+      name: apache2
+      enabled: yes
+      state: started
+- name: webserver-reload
+  systemd:
+      name: apache2
+      state: reloaded
+
+...

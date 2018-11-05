@@ -1,0 +1,5 @@
+---
+pkgname: apache2
+domain_name: website1.com
+webroot: website1
+...

@@ -1,0 +1,15 @@
+---
+- name: creating instances
+  ec2_instance:
+      name: ansible1
+      availability_zone: ap-south-1a
+      image_id: ami-0d773a3b7bb2bb1c1
+      instance_type: t2.micro
+      key_name: ansible-key
+      region: ap-south-1
+      security_group: ansiblesg
+      state: present
+      tags:
+        Name: ansibleinstance1
+      tenancy: default
+...
